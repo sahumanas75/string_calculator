@@ -9,18 +9,23 @@ public class StringCalculatorUtil {
 		if (numbers.equals(""))
 			return sum;
 		else if (numbers.length() <= 3) {
-			for (Integer index = 0; index < numbers.length(); index++) {
-
-				Character character = new Character(numbers.charAt(index));
-				String num = character.toString();
-
-				if (!num.equalsIgnoreCase(","))
-					sum += Integer.valueOf(num);
-			}
-
+			sum = getSumOfNumbers(numbers, sum);
 			return sum;
 		} else {
-			return null;
+			sum = getSumOfNumbers(numbers, sum);
+			return sum;
 		}
+	}
+
+	private Integer getSumOfNumbers(String numbers, Integer sum) {
+		for (Integer index = 0; index < numbers.length(); index++) {
+
+			Character character = new Character(numbers.charAt(index));
+			String num = character.toString();
+
+			if (!num.equalsIgnoreCase(","))
+				sum += Integer.valueOf(num);
+		}
+		return sum;
 	}
 }
